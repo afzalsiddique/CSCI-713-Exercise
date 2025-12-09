@@ -26,5 +26,16 @@ class UtilsTest {
         assertFalse(Utils.isValidAge(-1));
         assertFalse(Utils.isValidAge(121));
     }
+
+    @Test
+    void validStudentDataPassesUtilityChecksAndConstructs() {
+        assertTrue(Utils.checkName("Zara"));
+        assertTrue(Utils.isValidAge(18));
+
+        Student student = new Student("Zara", 18, 3.6);
+        assertEquals("Zara", student.getName());
+        assertEquals(18, student.age);
+        assertEquals(3.6, student.getGpa(), 0.0001);
+    }
 }
 

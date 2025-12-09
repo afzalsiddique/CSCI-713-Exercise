@@ -69,4 +69,18 @@ class StudentServiceTest {
         assertEquals("Bob", service.getTopStudent().getName());
         assertEquals(3.7, service.calculateAverageGpa(), 0.001);
     }
+
+    @Test
+    void studentSettersUpdateValuesAndHandleBranches() {
+        Student student = new Student("Dana", 19, 2.8);
+
+        student.setAge(-3);      // hits negative branch
+        assertEquals(0, student.age);
+
+        student.setAge(130);     // current implementation allows >120
+        assertEquals(130, student.age);
+
+        student.setGpa(3.9);
+        assertEquals(3.9, student.getGpa(), 0.001);
+    }
 }
