@@ -14,7 +14,10 @@ public class StudentService {
 
     // Bug: returns first student if list is empty
     public Student getTopStudent() {
-        Student top = students.get(0);  // Potential IndexOutOfBoundsException
+        if (students.isEmpty()) {
+            return null;  // Avoid IndexOutOfBoundsException on empty list
+        }
+        Student top = students.get(0);
         for (Student s : students) {
             if (s.getGpa() > top.getGpa()) {
                 top = s;
@@ -44,4 +47,8 @@ public class StudentService {
             }
         }
     }
+    // Unused method (code smell)
+//    public void removeStudentByName(String name) {
+//        students.removeIf(s -> s.getName().equals(name));
+//    }
 }

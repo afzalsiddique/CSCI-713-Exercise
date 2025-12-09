@@ -18,6 +18,13 @@ class StudentServiceTest {
     }
 
     @Test
+    void testGetTopStudentEmptyListReturnsNull() {
+        StudentService service = new StudentService();
+
+        assertNull(service.getTopStudent());
+    }
+
+    @Test
     void testCalculateAverageGpa() {
         StudentService service = new StudentService();
         service.addStudent(new Student("Alice", 20, 3.5));
@@ -27,8 +34,39 @@ class StudentServiceTest {
         assertEquals(3.5, avg, 0.001);
     }
 
-    // Intentionally leave out tests for:
-    // - removeStudentByName
-    // - behavior with empty student list
-    // - Utils methods
+    @Test
+    void testCalculateAverageGpaEmptyList() {
+        StudentService service = new StudentService();
+
+        double avg = service.calculateAverageGpa();
+        assertEquals(0.0, avg, 0.001);
+    }
+
+    @Test
+    void testRemoveStudentByName() {
+        StudentService service = new StudentService();
+        Student s1 = new Student("Alice", 20, 3.5);
+        Student s2 = new Student("Bob", 22, 3.9);
+        service.addStudent(s1);
+        service.addStudent(s2);
+
+        service.removeStudentByName("Alice");
+
+        assertEquals("Bob", service.getTopStudent().getName());
+        assertEquals(3.9, service.calculateAverageGpa(), 0.001);
+    }
+
+    @Test
+    void testRemoveStudentByNameNoMatchKeepsListIntact() {
+        StudentService service = new StudentService();
+        Student s1 = new Student("Alice", 20, 3.5);
+        Student s2 = new Student("Bob", 22, 3.9);
+        service.addStudent(s1);
+        service.addStudent(s2);
+
+        service.removeStudentByName("Charlie");
+
+        assertEquals("Bob", service.getTopStudent().getName());
+        assertEquals(3.7, service.calculateAverageGpa(), 0.001);
+    }
 }

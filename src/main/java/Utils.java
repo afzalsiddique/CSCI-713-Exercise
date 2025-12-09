@@ -7,13 +7,13 @@ public class Utils {
         else return false;
     }
 
+//    public static boolean isValidAge(int age) {
+//        if (age < 0) return false;
+//        else return true;  // Bug: Allows age > 120
+//    }
     public static boolean isValidAge(int age) {
         if (age < 0) return false;
-        else return true;  // Bug: Allows age > 120
+        return age <= 120;
     }
 
-    // Unused method (code smell)
-    public static void printMessage(String msg) {
-        System.out.println(msg);
-    }
 }
