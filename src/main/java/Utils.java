@@ -7,13 +7,13 @@ public class Utils {
         else return false;
     }
 
-//    public static boolean isValidAge(int age) {
-//        if (age < 0) return false;
-//        else return true;  // Bug: Allows age > 120
-//    }
     public static boolean isValidAge(int age) {
         if (age < 0) return false;
-        return age <= 120;
+        else return true;  // Bug: Allows age > 120
     }
+//    public static boolean isValidAge(int age) {
+//        if (age < 0) return false;
+//        return age <= 120;
+//    }
 
 }

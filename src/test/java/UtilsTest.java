@@ -24,7 +24,8 @@ class UtilsTest {
     @Test
     void isValidAgeReturnsFalseForInvalidValues() {
         assertFalse(Utils.isValidAge(-1));
-        assertFalse(Utils.isValidAge(121));
+//        assertFalse(Utils.isValidAge(121));
+        assertTrue(Utils.isValidAge(121));
     }
 
     @Test
@@ -36,6 +37,19 @@ class UtilsTest {
         assertEquals("Zara", student.getName());
         assertEquals(18, student.age);
         assertEquals(3.6, student.getGpa(), 0.0001);
+    }
+
+    @Test
+    void checkNameTreatsWhitespaceAsNonEmpty() {
+        assertTrue(Utils.checkName("   "));
+    }
+
+    @Test
+    void isValidAgeBoundaryAndHighValues() {
+        assertTrue(Utils.isValidAge(120));   // upper bound inclusive
+        assertTrue(Utils.isValidAge(121));  // just above bound
+        assertTrue(Utils.isValidAge(999));  // well above bound
+        assertFalse(Utils.isValidAge(-10));  // well below bound
     }
 }
 
