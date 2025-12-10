@@ -1,4 +1,3 @@
-
 public class Main {
     public static void main(String[] args) {
         StudentService service = new StudentService();
@@ -16,6 +15,13 @@ public class Main {
 
         // Code smell: Repeated calls, magic numbers
         System.out.println("Average GPA: " + service.calculateAverageGpa());
+
+        // Using the removeStudentByName method
+        System.out.println("\nRemoving student 'Bob'...");
+        service.removeStudentByName("Bob");
+
+        System.out.println("Top Student after removal: " + service.getTopStudent().getName());
+        System.out.println("Average GPA after removal: " + service.calculateAverageGpa());
 
         // Dead code / unused
         int x = 42;
