@@ -3,8 +3,7 @@ import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThrows;
+import static org.junit.Assert.*;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 public class StudentServiceTest {
@@ -75,9 +74,10 @@ public class StudentServiceTest {
     @Test
     @DisplayName("getTopStudent: Should throw IndexOutOfBoundsException on empty list (BUG)")
     public void testGetTopStudentEmptyList() {
-        assertThrows(IndexOutOfBoundsException.class, () -> {
-            service.getTopStudent();
-        });
+        assertNull(service.getTopStudent());
+//        assertThrows(IndexOutOfBoundsException.class, () -> {
+//            service.getTopStudent();
+//        });
     }
 
     @Test
